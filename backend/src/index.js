@@ -1,16 +1,18 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const routes = require('./routes')
 
 const app = express()
 
-const porta = 3030
+const porta = 3333
 
 mongoose.connect('mongodb+srv://luanpanno:omnistack@cluster0-bhbkx.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 
+app.use(cors({ origin: 'http://localhost:3000' }))
 app.use(express.json())
 app.use(routes)
 
